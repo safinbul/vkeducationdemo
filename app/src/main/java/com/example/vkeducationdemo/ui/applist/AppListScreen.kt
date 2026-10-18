@@ -14,10 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.vkeducationdemo.data.Apps
+import com.example.vkeducationdemo.domain.model.App
 import com.example.vkeducationdemo.ui.theme.VKEducationDemoTheme
 
 @Composable
 internal fun AppListScreen(
+    onAppClick: (App) -> Unit = {},
     modifier: Modifier = Modifier,
 ) {
     Scaffold(
@@ -34,7 +36,10 @@ internal fun AppListScreen(
                 items = Apps,
                 key = { _, app -> app.id },
             ) { index, app ->
-                AppListItem(app = app)
+                AppListItem(
+                    app = app,
+                    onClick = { onAppClick(app) },
+                )
                 if (index != Apps.lastIndex) {
                     HorizontalDivider(
                         modifier = Modifier.padding(start = 88.dp),
