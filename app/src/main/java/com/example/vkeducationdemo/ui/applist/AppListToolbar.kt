@@ -1,6 +1,7 @@
 package com.example.vkeducationdemo.ui.applist
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
@@ -27,11 +28,14 @@ import com.example.vkeducationdemo.ui.theme.VKEducationDemoTheme
 
 @Composable
 internal fun AppListToolbar(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Surface(
         color = MaterialTheme.colorScheme.primary,
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick),
     ) {
         Row(
             modifier = Modifier
@@ -73,6 +77,6 @@ private fun CurrentAppIcon(
 @Composable
 private fun AppListToolbarPreview() {
     VKEducationDemoTheme {
-        AppListToolbar()
+        AppListToolbar(onClick = {})
     }
 }

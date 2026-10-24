@@ -9,22 +9,41 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.vkeducationdemo.data.Apps
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.vkeducationdemo.R
 import com.example.vkeducationdemo.domain.model.App
 import com.example.vkeducationdemo.ui.theme.VKEducationDemoTheme
+import kotlinx.coroutines.flow.Flow
 
 @Composable
 internal fun AppListScreen(
     onAppClick: (App) -> Unit = {},
     modifier: Modifier = Modifier,
+    viewModel: AppListViewModel = viewModel(),
 ) {
+    val state by viewModel.state.collectAsState()
+    val snackbarHostState = remember { SnackbarHostState() }
+
+    ObserveEvents(
+        events = viewModel.events,
+        snackbarHostState = snackbarHostState,
+    )
+
     Scaffold(
         modifier = modifier.fillMaxSize(),
-        topBar = { AppListToolbar() },
+        topBar = { AppListToolbar(onClick = viewModel::onToolbarClick) },
+        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier
@@ -33,14 +52,14 @@ internal fun AppListScreen(
             contentPadding = PaddingValues(top = 8.dp, bottom = 16.dp),
         ) {
             itemsIndexed(
-                items = Apps,
+                items = state.apps,
                 key = { _, app -> app.id },
             ) { index, app ->
                 AppListItem(
                     app = app,
                     onClick = { onAppClick(app) },
                 )
-                if (index != Apps.lastIndex) {
+                if (index != state.apps.lastIndex) {
                     HorizontalDivider(
                         modifier = Modifier.padding(start = 88.dp),
                         color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f),
@@ -51,11 +70,29 @@ internal fun AppListScreen(
     }
 }
 
+@Composable
+private fun ObserveEvents(
+    events: Flow<AppListEvent>,
+    snackbarHostState: SnackbarHostState,
+) {
+    val toolbarClickedText = stringResource(R.string.app_list_toolbar_clicked)
+
+    LaunchedEffect(Unit) {
+        events.collect { event ->
+            when (event) {
+                is AppListEvent.ToolbarClicked -> {
+                    snackbarHostState.showSnackbar(toolbarClickedText)
+                }
+            }
+        }
+    }
+}
+
 @Preview(name = "Light", showBackground = true)
 @Composable
 private fun AppListScreenLightPreview() {
     VKEducationDemoTheme {
-        AppListScreen()
+        AppListScreen(viewModel = AppListViewModel())
     }
 }
 
@@ -63,6 +100,6 @@ private fun AppListScreenLightPreview() {
 @Composable
 private fun AppListScreenDarkPreview() {
     VKEducationDemoTheme {
-        AppListScreen()
+        AppListScreen(viewModel = AppListViewModel())
     }
 }
