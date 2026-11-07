@@ -4,7 +4,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 
 data class AppDetails(
-    val id: Long,
+    val id: String,
     val name: String,
     val developer: String,
     val category: Category,

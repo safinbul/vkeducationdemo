@@ -97,8 +97,8 @@ private fun Preview() {
     VKEducationDemoTheme {
         AppDetailsContent(
             content = AppDetailsState.Content(
-                appDetails = getAppDetails(1L),
-                showcaseApps = getShowcaseApps(1L),
+                appDetails = getAppDetails("1"),
+                showcaseApps = getShowcaseApps("1"),
                 descriptionCollapsed = false,
             ),
             onBackClick = {},

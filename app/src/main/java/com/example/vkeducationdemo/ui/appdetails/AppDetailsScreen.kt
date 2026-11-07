@@ -24,7 +24,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 internal fun AppDetailsScreen(
-    appId: Long,
+    appId: String,
     onBackClick: () -> Unit,
     onShowcaseAppClick: () -> Unit,
     modifier: Modifier = Modifier,

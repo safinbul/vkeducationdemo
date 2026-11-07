@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -21,10 +22,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
 import com.example.vkeducationdemo.domain.model.App
 import com.example.vkeducationdemo.domain.model.Category
 import com.example.vkeducationdemo.ui.theme.Accent
@@ -47,6 +50,7 @@ internal fun AppListItem(
         AppIcon(
             icon = app.icon,
             containerColor = app.iconContainer,
+            iconUrl = app.iconUrl,
             modifier = Modifier.size(56.dp),
         )
         Column(
@@ -80,6 +84,7 @@ internal fun AppIcon(
     containerColor: Color,
     modifier: Modifier = Modifier,
     iconSize: Dp = 28.dp,
+    iconUrl: String? = null,
 ) {
     Box(
         modifier = modifier
@@ -87,12 +92,21 @@ internal fun AppIcon(
             .background(containerColor),
         contentAlignment = Alignment.Center,
     ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            tint = Color.White,
-            modifier = Modifier.size(iconSize),
-        )
+        if (iconUrl != null) {
+            AsyncImage(
+                model = iconUrl,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize(),
+            )
+        } else {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                tint = Color.White,
+                modifier = Modifier.size(iconSize),
+            )
+        }
     }
 }
 
@@ -120,7 +134,7 @@ private fun AppListItemPreview() {
     VKEducationDemoTheme {
         AppListItem(
             app = App(
-                id = 1L,
+                id = "1",
                 name = "ВКонтакте",
                 shortDescription = "Общение с друзьями, музыка, клипы и интересные сообщества",
                 category = Category.SOCIAL,

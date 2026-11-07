@@ -19,7 +19,7 @@ import com.example.vkeducationdemo.domain.model.Category
 
 internal val Apps: List<App> = listOf(
     App(
-        id = 1L,
+        id = "1",
         name = "ВКонтакте",
         shortDescription = "Общение с друзьями, музыка, клипы и интересные сообщества",
         category = Category.SOCIAL,
@@ -27,7 +27,7 @@ internal val Apps: List<App> = listOf(
         iconContainer = Color(0xFF0077FF),
     ),
     App(
-        id = 2L,
+        id = "2",
         name = "RuStore",
         shortDescription = "Магазин приложений и игр для Android",
         category = Category.SHOPPING,
@@ -35,7 +35,7 @@ internal val Apps: List<App> = listOf(
         iconContainer = Color(0xFF7C4DFF),
     ),
     App(
-        id = 3L,
+        id = "3",
         name = "Почта",
         shortDescription = "Письма, вложения и календарь в одном месте",
         category = Category.UTILITIES,
@@ -43,7 +43,7 @@ internal val Apps: List<App> = listOf(
         iconContainer = Color(0xFF00897B),
     ),
     App(
-        id = 4L,
+        id = "4",
         name = "Карты",
         shortDescription = "Навигация, пробки и популярные места рядом",
         category = Category.MAPS,
@@ -51,7 +51,7 @@ internal val Apps: List<App> = listOf(
         iconContainer = Color(0xFF2E7D32),
     ),
     App(
-        id = 5L,
+        id = "5",
         name = "Музыка",
         shortDescription = "Миллионы треков и подкастов, офлайн-режим",
         category = Category.MUSIC,
@@ -59,7 +59,7 @@ internal val Apps: List<App> = listOf(
         iconContainer = Color(0xFFD81B60),
     ),
     App(
-        id = 6L,
+        id = "6",
         name = "Кинотеатр",
         shortDescription = "Фильмы и сериалы онлайн в HD-качестве",
         category = Category.VIDEO,
@@ -67,7 +67,7 @@ internal val Apps: List<App> = listOf(
         iconContainer = Color(0xFF1E88E5),
     ),
     App(
-        id = 7L,
+        id = "7",
         name = "Заметки",
         shortDescription = "Быстрые заметки, списки дел и напоминания",
         category = Category.PRODUCTIVITY,
@@ -75,7 +75,7 @@ internal val Apps: List<App> = listOf(
         iconContainer = Color(0xFFF57C00),
     ),
     App(
-        id = 8L,
+        id = "8",
         name = "Фитнес",
         shortDescription = "Тренировки, шагомер и дневник активности",
         category = Category.HEALTH,
@@ -83,7 +83,7 @@ internal val Apps: List<App> = listOf(
         iconContainer = Color(0xFFE53935),
     ),
     App(
-        id = 9L,
+        id = "9",
         name = "Новости",
         shortDescription = "Главные события дня и персональные рекомендации",
         category = Category.NEWS,
@@ -91,7 +91,7 @@ internal val Apps: List<App> = listOf(
         iconContainer = Color(0xFF5D4037),
     ),
     App(
-        id = 10L,
+        id = "10",
         name = "Банк",
         shortDescription = "Переводы, платежи и аналитика расходов",
         category = Category.FINANCE,
@@ -99,7 +99,7 @@ internal val Apps: List<App> = listOf(
         iconContainer = Color(0xFF3949AB),
     ),
     App(
-        id = 11L,
+        id = "11",
         name = "Онлайн-курсы",
         shortDescription = "Видеоуроки и тесты по программированию",
         category = Category.EDUCATION,
@@ -107,7 +107,7 @@ internal val Apps: List<App> = listOf(
         iconContainer = Color(0xFF00838F),
     ),
     App(
-        id = 12L,
+        id = "12",
         name = "Еда",
         shortDescription = "Доставка из ресторанов и кафе рядом",
         category = Category.FOOD,

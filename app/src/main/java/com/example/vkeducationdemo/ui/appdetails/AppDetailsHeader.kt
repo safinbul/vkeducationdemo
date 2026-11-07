@@ -111,7 +111,7 @@ private fun getCategoryText(category: Category): String = when (category) {
 private fun Preview() {
     VKEducationDemoTheme {
         AppDetailsHeader(
-            appDetails = getAppDetails(1L),
+            appDetails = getAppDetails("1"),
             modifier = Modifier.fillMaxWidth(),
         )
     }

@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                     composable("$APP_DETAILS_ROUTE/{appId}") { entry ->
-                        val appId = entry.arguments?.getString("appId")?.toLongOrNull() ?: 1L
+                        val appId = entry.arguments?.getString("appId").orEmpty()
                         AppDetailsScreen(
                             appId = appId,
                             onBackClick = { navController.popBackStack() },

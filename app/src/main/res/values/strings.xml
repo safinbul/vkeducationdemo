@@ -18,4 +18,7 @@
     <string name="showcase_title">Витрина</string>
 
     <string name="app_list_toolbar_clicked">Клик по тулбару</string>
+
+    <string name="app_list_error">Произошла непредвиденная ошибка</string>
+    <string name="app_list_refresh">Перезагрузить</string>
 </resources>

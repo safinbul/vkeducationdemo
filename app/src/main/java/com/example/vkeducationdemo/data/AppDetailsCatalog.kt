@@ -24,7 +24,7 @@ private fun App.toAppDetails(
     description = description,
 )
 
-private val HardcodedAppDetails: Map<Long, AppDetails> = listOf(
+private val HardcodedAppDetails: Map<String, AppDetails> = listOf(
     Apps[0].toAppDetails(
         developer = "VK",
         ageRating = 3,
@@ -113,8 +113,8 @@ private val HardcodedAppDetails: Map<Long, AppDetails> = listOf(
     ),
 ).associateBy { it.id }
 
-internal fun getAppDetails(appId: Long): AppDetails =
+internal fun getAppDetails(appId: String): AppDetails =
     HardcodedAppDetails[appId] ?: HardcodedAppDetails.getValue(Apps[0].id)
 
-internal fun getShowcaseApps(currentAppId: Long): List<App> =
+internal fun getShowcaseApps(currentAppId: String): List<App> =
     Apps.filter { it.id != currentAppId }.take(SHOWCASE_PAGE_COUNT * SHOWCASE_PAGE_SIZE)

@@ -62,7 +62,7 @@ internal fun ShowcaseApps(
 private fun Preview() {
     VKEducationDemoTheme {
         ShowcaseApps(
-            apps = getShowcaseApps(1L),
+            apps = getShowcaseApps("1"),
             onAppClick = {},
         )
     }
