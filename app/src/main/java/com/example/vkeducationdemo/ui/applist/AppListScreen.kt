@@ -29,7 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.vkeducationdemo.R
 import com.example.vkeducationdemo.data.Apps
 import com.example.vkeducationdemo.domain.model.App
@@ -40,7 +40,7 @@ import kotlinx.coroutines.flow.Flow
 internal fun AppListScreen(
     onAppClick: (App) -> Unit = {},
     modifier: Modifier = Modifier,
-    viewModel: AppListViewModel = viewModel(),
+    viewModel: AppListViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }

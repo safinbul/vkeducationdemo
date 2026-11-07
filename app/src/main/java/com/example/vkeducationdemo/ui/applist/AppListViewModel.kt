@@ -2,8 +2,8 @@ package com.example.vkeducationdemo.ui.applist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.vkeducationdemo.data.network.CatalogNetwork
 import com.example.vkeducationdemo.domain.repository.CatalogRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -12,9 +12,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-internal class AppListViewModel(
-    private val repository: CatalogRepository = CatalogNetwork.repository,
+@HiltViewModel
+class AppListViewModel @Inject constructor(
+    private val repository: CatalogRepository,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<AppListState>(AppListState.Loading)

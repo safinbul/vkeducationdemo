@@ -3,8 +3,9 @@ package com.example.vkeducationdemo.data.network
 import com.example.vkeducationdemo.domain.model.App
 import com.example.vkeducationdemo.domain.model.AppDetails
 import com.example.vkeducationdemo.domain.repository.CatalogRepository
+import javax.inject.Inject
 
-internal class CatalogRepositoryImpl(
+class CatalogRepositoryImpl @Inject constructor(
     private val api: CatalogApi,
 ) : CatalogRepository {
     override suspend fun getCatalog(): List<App> =
